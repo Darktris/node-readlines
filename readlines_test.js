@@ -86,7 +86,7 @@ describe('Line by line', function() {
     });
 
     it('should return lastEOL', function() {
-        var filename = __dirname + '/dummy_files/testLastEOL.json';
+        var filename = __dirname + '/dummy_files/testLastEOL.txt';
         var liner = new lineByLine(filename);
 
         assert(liner.next().toString('ascii') === '10');
