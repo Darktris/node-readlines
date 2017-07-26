@@ -123,6 +123,12 @@ LineByLine.prototype._readChunk = function(lineLeftovers) {
 
         // Read a new buffer and add it to the list of buffers updating the vars
         var bytesRead = fs.readSync(this.fd, newBuffer, 0, this.options.readChunk, this.fdPosition);
+        
+        if (!bytesRead) {
+            this.lastEOF = this.fdPosition
+            break
+        }
+
         totalBytesRead = totalBytesRead + bytesRead;
 
         this.fdPosition = this.fdPosition + bytesRead;
@@ -132,7 +138,9 @@ LineByLine.prototype._readChunk = function(lineLeftovers) {
     }
 
     //The last EOL was this.fdPosition - (length(Buffer) - EOLpos)
-    this.lastEOL = this.fdPosition - (bytesRead - EOLpos)
+    if (this.lastEOF != this.fdPosition) {
+        this.lastEOL = this.fdPosition - (bytesRead - EOLpos)
+    }
 
     // Concat all the buffers to a big one
     bufferData = Buffer.concat(buffers);
