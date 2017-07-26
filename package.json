@@ -1,12 +1,12 @@
 {
   "name": "n-readlines",
-  "version": "0.2.7.1",
+  "version": "0.2.7",
   "description": "Read file line by line without buffering the whole file in memory.",
   "main": "./readlines.js",
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "http://github.com/nacholibre/node-readlines.git"
+    "url": "https://github.com/Darktris/node-readlines"
   },
   "keywords": [
     "read",
@@ -27,7 +27,7 @@
     "mocha": "^2.0.1"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha *_test.js -A"
+    "test": "./node_modules/mocha/bin/mocha *_test.js"
   },
   "author": "Yoan Arnaudov <jonidev@gmail.com>",
   "license": "MIT"
