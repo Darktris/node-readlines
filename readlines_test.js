@@ -84,4 +84,16 @@ describe('Line by line', function() {
         assert(liner.next() === false);
         assert(liner.fd === null);
     });
+
+    it('should return lastEOL', function() {
+        var filename = __dirname + '/dummy_files/testLastEOL.json';
+        var liner = new lineByLine(filename);
+
+        assert(liner.next().toString('ascii') === '10');
+        assert(liner.next().toString('ascii') === '20');
+        assert(liner.next().toString('ascii') === '3');
+        assert(liner.next() === false);
+        assert(liner.fd === null);
+        assert(liner.lastEOL === 7);
+    });
 });
